@@ -39,7 +39,7 @@ def redondear(monto):
 
 
 def validar_item(item):
-    producto = item.get("producto")
+    producto = item.get("producto") if isinstance(item, dict) else None
     if not isinstance(producto, str) or producto not in CATALOGO:
         raise CheckoutError("PRODUCTO_INEXISTENTE", f"Producto inexistente: {producto!r}")
 
@@ -53,7 +53,7 @@ def validar_item(item):
 
 
 def calcular_subtotal(carrito):
-    if not carrito:
+    if not isinstance(carrito, list) or not carrito:
         raise CheckoutError("CARRITO_VACIO", "El carrito está vacío")
 
     subtotal = Decimal("0.00")

@@ -2,10 +2,10 @@
 platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0
 rootdir: C:\Users\Usuario\Documents\tp-desarrollodesistemas\TP4-D.SISTEMAS-PALACIOS-JUAN-CRUZ\Juan Cruz PALACIOS - TP4 - Testing\TP4 - Testing
 plugins: anyio-4.15.1, cov-7.1.0
-collected 74 items
+collected 80 items
 
-test_checkout.py ....................................................... [ 74%]
-...................                                                      [100%]
+test_checkout.py ....................................................... [ 68%]
+.........................                                                [100%]
 
 =============================== tests coverage ================================
 ______________ coverage: platform win32, python 3.12.10-final-0 _______________
@@ -15,4 +15,4 @@ Name          Stmts   Miss Branch BrPart  Cover   Missing
 checkout.py      71      0     30      0   100%
 ---------------------------------------------------------
 TOTAL            71      0     30      0   100%
-============================= 74 passed in 0.20s ==============================
+============================= 80 passed in 0.18s ==============================
