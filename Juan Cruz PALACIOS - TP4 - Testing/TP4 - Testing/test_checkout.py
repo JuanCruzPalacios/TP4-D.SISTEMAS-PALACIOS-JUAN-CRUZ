@@ -35,3 +35,11 @@ def test_cantidad_diez_es_valida():
     subtotal = calcular_subtotal(carrito)
 
     assert subtotal == Decimal("119995.00")
+
+
+def test_cinco_prendas_tienen_diez_por_ciento_de_descuento():
+    carrito = [item("remera", cantidad=5)]
+
+    resultado = calcular_total(carrito, "CABA")
+
+    assert resultado["descuento"] == Decimal("5999.75")
