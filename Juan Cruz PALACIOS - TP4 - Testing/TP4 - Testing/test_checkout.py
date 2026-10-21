@@ -43,3 +43,11 @@ def test_cinco_prendas_tienen_diez_por_ciento_de_descuento():
     resultado = calcular_total(carrito, "CABA")
 
     assert resultado["descuento"] == Decimal("5999.75")
+
+
+def test_egresados2026_es_valido_el_30_de_noviembre():
+    ultimo_dia = date(2026, 11, 30)
+
+    descuento = calcular_descuento(100000, 1, "EGRESADOS2026", ultimo_dia)
+
+    assert descuento == Decimal("15000.00")
