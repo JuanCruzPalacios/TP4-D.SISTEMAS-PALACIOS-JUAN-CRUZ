@@ -55,3 +55,7 @@ def test_egresados2026_es_valido_el_30_de_noviembre():
 
 def test_zona_inexistente_es_invalida():
     assert codigo_de_error(calcular_envio, Decimal("10000.00"), "MARTE") == "ZONA_INVALIDA"
+
+
+def test_carrito_vacio_es_invalido():
+    assert codigo_de_error(calcular_total, [], "CABA") == "CARRITO_VACIO"
