@@ -59,3 +59,11 @@ def test_zona_inexistente_es_invalida():
 
 def test_carrito_vacio_es_invalido():
     assert codigo_de_error(calcular_total, [], "CABA") == "CARRITO_VACIO"
+
+
+def test_se_ignora_el_precio_que_trae_el_item():
+    carrito = [item("remera", precio=1)]
+
+    subtotal = calcular_subtotal(carrito)
+
+    assert subtotal == Decimal("11999.50")
