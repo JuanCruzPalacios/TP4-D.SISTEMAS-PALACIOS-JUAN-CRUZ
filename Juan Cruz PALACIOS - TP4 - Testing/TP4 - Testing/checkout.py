@@ -90,7 +90,7 @@ def calcular_envio(subtotal, zona):
     if zona not in ENVIOS:
         raise CheckoutError(
             "ZONA_INVALIDA",
-            f"Zona inválida. Opciones: {ENVIOS.keys().join(', ')}",
+            f"Zona inválida. Opciones: {', '.join(ENVIOS)}",
         )
 
     if subtotal >= 60000:
