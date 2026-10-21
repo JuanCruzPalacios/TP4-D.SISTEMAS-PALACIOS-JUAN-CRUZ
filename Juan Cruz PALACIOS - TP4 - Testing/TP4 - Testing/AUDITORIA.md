@@ -111,7 +111,7 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 - Archivo y línea: `checkout.py`, líneas 35 y 40
 - Categoría: tipos
 - Regla: R2, R3 y sección 1 (ante datos inválidos se lanza `CheckoutError`, nunca otra excepción)
-- Cómo la encontré: lectura del código. Un talle `None` lanza `AttributeError`, una cantidad `"2"` lanza `TypeError` y un ítem sin talle lanza `KeyError`.
+- Cómo la encontré: lectura del código. Un talle `None` lanza `AttributeError`, una cantidad `"2"` lanza `TypeError` y un ítem sin talle lanza `KeyError`. Lo mismo pasa si el ítem no es un diccionario o el carrito no es una lista: `calcular_total(["buzo"], "CABA")` lanza `TypeError`.
 - Severidad: media
 
 **H-07 · La cantidad 10 se rechaza**
@@ -125,7 +125,7 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 - Archivo y línea: `checkout.py`, línea 40
 - Categoría: tipos
 - Regla: R3 (los no enteros dan `CANTIDAD_INVALIDA`)
-- Cómo la encontré: caso de `CASOS.md`. Con `2.5`, como `1 <= 2.5 < 10`, el ítem se acepta y se cobran 2,5 prendas.
+- Cómo la encontré: caso de `CASOS.md`. Con `2.5`, como `1 <= 2.5 < 10`, el ítem se acepta y se cobran 2,5 prendas. También se acepta `True` como cantidad, porque en Python cuenta como el entero 1.
 - Severidad: media
 
 **H-09 · Un producto inexistente se saltea en silencio**
@@ -328,6 +328,13 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 - Cómo la encontré: lectura del código. Si algo falla antes de `con.close()`, la conexión queda abierta.
 - Severidad: baja
 
+**H-37 · Los métodos no soportados no responden con el formato de error**
+- Archivo y línea: `api.py`, líneas 11 a 68 (la clase solo define `do_POST` y `do_GET`)
+- Categoría: manejo de errores
+- Regla: R11 (todos los errores tienen el formato `{"error": {"code", "message"}}`)
+- Cómo la encontré: lo probé. `DELETE /api/v1/pedidos/1` devuelve 501 con una página HTML del servidor, no un JSON con `code` y `message`.
+- Severidad: baja
+
 ### Tabla de todas las fallas, de la más grave a la menos grave
 
 | # | Archivo | Línea | Categoría | Regla | Severidad |
@@ -364,6 +371,7 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 | H-35 | `api.py` | 64-66 | manejo de errores | R11 | media |
 | H-20 | `checkout.py` | 84 | lógica y límites | R6 | media |
 | H-17 | `checkout.py` | 64, 88 | tipos | sección 1 | baja |
+| H-37 | `api.py` | 11-68 | manejo de errores | R11 | baja |
 | H-11 | `checkout.py` | 50 | code smell | sección 1 | baja |
 | H-13 | `checkout.py` | 63 | code smell | — | baja |
 | H-36 | `api.py` | 34-44, 63-65 | code smell | — | baja |

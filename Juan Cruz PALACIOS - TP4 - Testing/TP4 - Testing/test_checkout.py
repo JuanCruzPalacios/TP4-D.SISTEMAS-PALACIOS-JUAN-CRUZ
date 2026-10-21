@@ -348,3 +348,13 @@ def test_total_con_envio_gratis():
 ])
 def test_con_varios_errores_se_informa_el_primero_segun_el_orden(carrito, zona, cupon, esperado):
     assert codigo_de_error(calcular_total, carrito, zona, cupon) == esperado
+
+
+@pytest.mark.parametrize("item_invalido", ["buzo", None, ["buzo", "M", 1]])
+def test_un_item_que_no_es_diccionario_es_un_producto_inexistente(item_invalido):
+    assert codigo_de_error(calcular_total, [item_invalido], "CABA") == "PRODUCTO_INEXISTENTE"
+
+
+@pytest.mark.parametrize("carrito", ["buzo", {"producto": "buzo"}, None])
+def test_un_carrito_que_no_es_una_lista_es_invalido(carrito):
+    assert codigo_de_error(calcular_total, carrito, "CABA") == "CARRITO_VACIO"
