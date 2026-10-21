@@ -50,7 +50,7 @@ def test_una_ruta_inexistente_devuelve_404(url):
 
 
 def test_un_post_a_una_ruta_inexistente_devuelve_404(url):
-    status, cuerpo = pedir(url, "POST", "/api/v1/otra", compra())
+    status, cuerpo = pedir(url, "POST", "/api/v1/otra")
 
     assert status == 404
     assert cuerpo["error"]["code"] == "RUTA_INEXISTENTE"
