@@ -51,3 +51,7 @@ def test_egresados2026_es_valido_el_30_de_noviembre():
     descuento = calcular_descuento(100000, 1, "EGRESADOS2026", ultimo_dia)
 
     assert descuento == Decimal("15000.00")
+
+
+def test_zona_inexistente_es_invalida():
+    assert codigo_de_error(calcular_envio, Decimal("10000.00"), "MARTE") == "ZONA_INVALIDA"
