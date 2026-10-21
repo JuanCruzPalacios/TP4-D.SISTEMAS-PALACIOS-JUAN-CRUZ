@@ -53,6 +53,8 @@ La suite cubre el 77% de las líneas (73% contando ramas), pero la cobertura sol
 
 ## Sección 2: hallazgos
 
+Los números de línea son los de los archivos tal como los entregó la IA, antes de cualquier corrección.
+
 ### Resultado del linter
 
 ```
@@ -207,8 +209,8 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 - Archivo y línea: `checkout.py`, línea 84
 - Categoría: lógica y límites
 - Regla: R6 (el descuento nunca puede superar el subtotal)
-- Cómo la encontré: lectura del código. No hay ningún tope; con los cupones válidos no llega a pasar, pero junto con H-19 el descuento se acerca al subtotal sin control.
-- Severidad: baja
+- Cómo la encontré: lectura del código, y después lo probé. No hay ningún tope, y junto con H-03 y H-19 el descuento supera el subtotal: 6 remeras con `DEBUG100` dan subtotal 71997.0, descuento 79196.7 y total -7199.7, o sea que la tienda le debe plata al comprador.
+- Severidad: media
 
 **H-21 · Redondeo con `round()` sobre `float`**
 - Archivo y línea: `checkout.py`, líneas 54, 84 y 117
@@ -360,7 +362,7 @@ El linter encontró por sí solo 4 de las fallas (H-01, H-11, H-12 y H-13). Toda
 | H-33 | `api.py` | 31-32 | manejo de errores | R11 | media |
 | H-34 | `api.py` | 35-41 | tipos | R11 | media |
 | H-35 | `api.py` | 64-66 | manejo de errores | R11 | media |
-| H-20 | `checkout.py` | 84 | lógica y límites | R6 | baja |
+| H-20 | `checkout.py` | 84 | lógica y límites | R6 | media |
 | H-17 | `checkout.py` | 64, 88 | tipos | sección 1 | baja |
 | H-11 | `checkout.py` | 50 | code smell | sección 1 | baja |
 | H-13 | `checkout.py` | 63 | code smell | — | baja |
